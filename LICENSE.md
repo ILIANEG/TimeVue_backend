@@ -1,0 +1,1 @@
+(c) 2021 Illia Negovora. All rights reserved
