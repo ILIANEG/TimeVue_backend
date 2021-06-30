@@ -21,33 +21,13 @@ function issueToken(payload: {userId: string}, hoursValid: number, secret:string
 
 /**
  * 
- * @see issueToken is an implementation
- * @param payload object containing the payload of the jwt token
- * @returns Promise<string | undefined>
- */
-export function issueShortTermToken(payload: {userId: string}): Promise<string | undefined> {
-    return issueToken(payload, 1, Globals.JWT_SECRET);
-}
-
-/**
- * 
- * @see issueToken is an implementation
- * @param payload object containing the payload of the jwt token
- * @returns Promise<string | undefined>
- */
- export function issueCertificate(payload: {userId: string}): Promise<string | undefined> {
-    return issueToken(payload, 8760, Globals.CERTIFICATE_SECRET);
-}
-
-/**
- * 
  * @param token 
  * @param type 
  * @returns 
  */
-export function verifyToken(token: string, type: 'token' | 'certificate'): Promise<Jwt.JwtPayload | undefined> {
+export function verifyToken(token: string): Promise<Jwt.JwtPayload | undefined> {
     return new Promise<Jwt.JwtPayload | undefined>((res, rej) => {
-        Jwt.verify(token, (type === 'token' ? Globals.JWT_SECRET : Globals.ENC_SECRET), (err, dec) => {
+        Jwt.verify(token, Globals.JWT_SECRET, (err, dec) => {
             if (err) {
                 return rej(err);
             } else {

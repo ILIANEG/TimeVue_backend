@@ -1,18 +1,20 @@
-export const knexConfig = {
+module.exports = {
     development: {
         client: 'pg',
         connection: {
-            host: '127.0.0.1',
+            host: 'localhost',
             port: '5432',
-            user: 'timevue',
-            password: '35Jk47ezY&k@'
+            user: 'illian',
+            password: '3244',
+            database: 'illian',
         },
         pool: {
             min: 2,
             max: 10,
         },
         migrations: {
-            tableName: 'knex_migrations'
+            tableName: 'knex_migrations',
+            type: 'ts'
         }
     }
 };

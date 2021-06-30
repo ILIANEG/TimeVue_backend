@@ -1,7 +1,8 @@
 import knex from 'knex'
-import { knexConfig } from '../config/knexfile'
+const knexConfig = require('../config/knexfile')
 
 /**
+ * 
  * @todo in prod, use dependancy injection 
  * to create knex instance so db access can be mocked
  * in testing
