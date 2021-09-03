@@ -1,20 +1,20 @@
-module.exports = {
+import * as ENV from './ENV'
+
+export default {
     development: {
         client: 'pg',
+        version: ENV.DEV.DB_VERSION,
         connection: {
-            host: 'localhost',
-            port: '5432',
-            user: 'illian',
-            password: '3244',
-            database: 'illian',
-        },
-        pool: {
-            min: 2,
-            max: 10,
+            host: ENV.DEV.DB_HOST,
+            user: ENV.DEV.DB_USERNAME,
+            password: ENV.DEV.DB_PASSWORD,
+            database: ENV.DEV.DB_NAME,
         },
         migrations: {
-            tableName: 'knex_migrations',
-            type: 'ts'
+            directory: '../../db/migrations'
+        },
+        seeds: {
+            directory: '../../db/seeds'
         }
-    }
-};
+    },
+}
